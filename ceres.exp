@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+# Tunnels in to MPI's contact server, and then to the target server
+set timeout 20
+
+spawn ssh "ceres" -L 8000:localhost:8000
+
+expect "Password:"
+
+send "\\<password_goes_here>\r";
+
+expect "kjose@ceres.mpi-inf.mpg.de's password:"
+send "\\<password_goes_here>\r";
+interact
